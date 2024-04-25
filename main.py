@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import os
 import re
+import time
 from asyncio import Semaphore, Task
 from datetime import datetime, timedelta
 from enum import Enum
@@ -222,7 +223,9 @@ async def delete_package_version(
     async with semaphore:
         try:
             response = await http_client.delete(url)
-            await wait_for_rate_limit(response=response, eligible_for_secondary_limit=True)
+            print("wait 2s")
+            time.sleep(2)
+            # await wait_for_rate_limit(response=response, eligible_for_secondary_limit=True)
             post_deletion_output(response=response, image_name=image_name, version_id=version_id)
         except TimeoutException as e:
             print(f'Request to delete {image_name} timed out with error `{e}`')
