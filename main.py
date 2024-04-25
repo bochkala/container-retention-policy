@@ -256,6 +256,7 @@ async def delete_org_package_versions(
         image_name=image_name,
         version_id=version_id,
     )
+    time.sleep(5)
 
 
 async def delete_package_versions(
@@ -277,6 +278,7 @@ async def delete_package_versions(
         image_name=image_name,
         version_id=version_id,
     )
+    time.sleep(5)
 
 
 class GithubAPI:
